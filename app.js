@@ -16,6 +16,7 @@ require('./configs/db.config');
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const makeAMatchRoutes = require('./routes/make-a-match');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -62,6 +63,7 @@ require('./configs/passport')(app)
 // Routes middleware
 app.use('/', index);
 app.use('/', authRoutes);
-app.use('/', userRoutes);   
+app.use('/', userRoutes);
+app.use('/', makeAMatchRoutes);   
 
 module.exports = app;
