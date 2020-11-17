@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const sdkClient = require('../sdk/sdk');
+const routeGuard = require('../middlewares/route-guard')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -40,7 +41,9 @@ res.render('index')
 
 });
 
-//user CRUD
+router.get('/dashboard', routeGuard, (req, res) => {
+  res.render('dashboard')
+})
 
 
 module.exports = router;

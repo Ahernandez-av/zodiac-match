@@ -13,8 +13,8 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
+  successRedirect: "/dashboard",
+  failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
@@ -46,11 +46,13 @@ router.post("/signup", (req, res, next) => {
     });
 
     newUser.save()
-    .then(() => {
-      res.redirect("/");
+    .then((user) => {
+      req.user = user
+      console.log(req.user)
+      res.redirect("/dashboard");
     })
     .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+      res.render("/signup", { message: "Something went wrong" });
     })
   });
 });
@@ -61,9 +63,22 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/auth/facebook", passport.authenticate("facebook"))
+
 router.get("/auth/facebook/callback", passport.authenticate("facebook", {
-  successRedirect: "/",
-  failureRedirect: "/"
+  successRedirect: "/dashboard",
+  failureRedirect: "/login"
+}))
+
+router.get("/auth/google", passport.authenticate("google", {
+  scope: [
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email"
+  ]
+}))
+
+router.get("/auth/google/callback", passport.authenticate("google", {
+  successRedirect: "/dashboard",
+  failureRedirect: "/login"
 }))
 
 module.exports = router;

@@ -5,21 +5,20 @@ const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
-const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
-mongoose
-  .connect('mongodb://localhost/zodiac-match', {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+
+// Set up the database
+require('./configs/db.config');
+
+// Routers
+const index = require('./routes/index');
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -32,15 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
-}));
-      
+}));  
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -57,30 +53,18 @@ hbs.registerHelper('ifUndefined', (value, options) => {
       return options.fn(this);
   }
 });
-  
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
 // Enable authentication using session + passport
-app.use(session({
-  secret: 'irongenerator',
-  resave: true,
-  saveUninitialized: true,
-  store: new MongoStore( { mongooseConnection: mongoose.connection })
-}))
+require('./configs/session')(app)
 app.use(flash());
-require('./passport')(app);
-    
+require('./configs/passport')(app)
 
-const index = require('./routes/index');
+// Routes middleware
 app.use('/', index);
-
-const authRoutes = require('./routes/auth');
 app.use('/', authRoutes);
-
-const userRoutes = require('./routes/user');
-app.use('/', userRoutes);
-      
+app.use('/', userRoutes);   
 
 module.exports = app;
