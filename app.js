@@ -7,9 +7,6 @@ const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const logger       = require('morgan');
 const path         = require('path');
-
-const session    = require("express-session");
-const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
 
 // Set up the database

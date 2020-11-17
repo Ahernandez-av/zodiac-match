@@ -55,6 +55,12 @@ router.post("/signup", (req, res, next) => {
       res.render("/signup", { message: "Something went wrong" });
     })
   });
+  passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
 });
 
 router.get("/logout", (req, res) => {
