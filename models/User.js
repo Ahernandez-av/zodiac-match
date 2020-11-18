@@ -7,7 +7,7 @@ const userSchema = new Schema({
   email: String,
   password: String,
   birthDate: {
-    day: Number,
+    date: Number,
     month: {
       type: Number,
       enum: [1,2,3,4,5,6,7,8,9,10,11,12]
@@ -15,17 +15,24 @@ const userSchema = new Schema({
     year: Number,
     hour: Number,
     minutes: Number,
-    place:{
-      lat: Number,
-      long: Number,
-      timeZone: Number
-    }
+      latitude: Number,
+      longitude: Number,
+      timezone: Number
+  },
+  first: {
+    type: Boolean,
+    value:true,
   },
   username:String,
-  location: String,
+  lati: Number,
+  longi: Number,
   gender: {
     type: String,
-    enum: ['male', 'female', 'other']
+    enum: ['male', 'female']
+  },
+  interest:{
+    type: String,
+    enum: ['male', 'female']
   },
   profilePicture: String,
   match: [{
