@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
   googleId: String,
@@ -19,26 +18,27 @@ const userSchema = new Schema({
     longitud: Number,
     timeZone: Number
   },
+  first: {
+    type: Boolean,
+    default: true
+  },
+  lati: Number,
+  longi: Number,
   username:String,
-  location: String,
   gender: {
     type: String,
-    enum: ['male', 'female', 'other']
+    enum: ['male', 'female']
+  },
+  interest:{
+    type: String,
+    enum: ['male', 'female']
   },
   profilePicture: String,
-  match: [{
+  matches: [{
     type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  comp: [{
-    type: Schema.Types.ObjectId,
-    ref: 'user'
+    ref:'Match'
   }],
   zodiacSign: String,
-  version: {
-    type: String,
-    enum: ['basic', 'super']
-  },
   post: [{
     type: Schema.Types.ObjectId,
     ref:'Post'
@@ -51,7 +51,6 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = model('User', userSchema);
 
 

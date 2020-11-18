@@ -11,9 +11,9 @@ exports.matchPage = async (req, res) => {
   let match = [...users]
 
   for (let i = match.length-1; i >= 0; i--) {
-    console.log(match[i].zodiacSign)
+
     let report = await axios.post(`zodiac_compatibility/${req.user.zodiacSign}/${match[i].zodiacSign}`)
-    console.log(report.data.compatibility_percentage, '🔥🔥🔥🔥')
+
     if (report.data.compatibility_percentage >= 75) {
       matches.push({
         user: users[i].email,
@@ -27,4 +27,8 @@ exports.matchPage = async (req, res) => {
 
   console.log(matches)
   res.render('make-a-match/match', {matches})
+}
+
+exports.makeMatch = (req, res) => {
+  res.redirect('/matches')
 }

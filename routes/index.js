@@ -6,7 +6,7 @@ const routeGuard = require('../middlewares/route-guard')
 router.get('/', (req, res, next) => res.render('index'));
 
 router.get('/dashboard', routeGuard, (req, res) => {
-  res.render('dashboard')
+  res.render('dashboard', req.user)
 })
 
 

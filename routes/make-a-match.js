@@ -9,4 +9,6 @@ const {
 
 router.get('/make-a-match', matchPage)
 
+router.post('/make-a-match', makeMatch)
+
 module.exports = router;

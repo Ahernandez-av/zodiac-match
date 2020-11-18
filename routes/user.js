@@ -1,10 +1,19 @@
 const express = require('express');
 const router  = express.Router();
-const {createProfile, processProfiles, profileDash}= require('../controllers/users')
+const uploadPicture = require('../configs/cloudinary');
+const {
+  createProfile, 
+  processProfiles, 
+  profileDash, 
+  deleteAccount, 
+  updateAccount, 
+  updatedProfiles
+}= require('../controllers/users')
 
+router.get('/dashboard', profileDash)
 router.get('/create-profile', createProfile)
-router.post('/create-profile', processProfiles)
-router.get('/dash',  profileDash)
-
-
+router.post('/create-profile', uploadPicture.single('image'), processProfiles)
+router.get('/update/:id',  updateAccount)
+router.post('/update/:id', uploadPicture.single('image'), updatedProfiles)
+router.get('/delete/:id',  deleteAccount)
 module.exports= router;

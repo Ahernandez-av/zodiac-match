@@ -1,9 +1,9 @@
-<h1>Profile</h1>
-<form action="/create-profile" enctype="multipart/form-data" method="post">
+<h1>Edit your profile</h1>
+<form action="/update/{{user._id}}" enctype="multipart/form-data" method="post">
   <br>
-  <h2>Birthdate</h2>
+  <h2>Birth information</h2>
   <label for="day"> Day
-    <input type="Number" name="day" id="day">
+    <input type="Number" name="day" id="day" value="{{user.birthDate.date}}"> 
   </label>
   <br>
   <label for="month"> Month
@@ -20,59 +20,58 @@
       <option value="10"> October</option>
       <option value="11">November</option>
       <option value="12"> December</option>
-    </select>
+    </select value="{{birthDate.month}}">
   </label>
   <br>
   <label for="year"> Year
-    <input type="Number" name="year" id="year">
+    <input type="Number" name="year" id="year" value="{{user.birthDate.year}}">
   </label>
   <br>
   <label for="hour"> Hour (24 hour format)
-    <input type="Number" name="hour" id="hour" placeholder="Example: 9, 18">
+    <input type="Number" name="hour" id="hour" placeholder="Example: 9, 18" value="{{user.birthDate.hour}}">
   </label>
   <br>
   <label for="minutes"> Minutes
-    <input type="Number" name="minutes" id="minutes" placeholder="Example: 24, 3">
+    <input type="Number" name="minutes" id="minutes" placeholder="Example: 24, 3" value="{{user.birthDate.minutes}}">
   </label>
   <br>
   <label for="place"> Place of birth
-  </label>
+   {{!-- /<input type="text" name="place" id="place" placeholder="Example: 9, 18" value="{{birthDate.hour}}"> --}}
   <div id="map" style="width: 400px; height: 300px"></div>
+</label
   <hr>
   <h2>Profile information</h2>
   <label for="username"> Username
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" value="{{user.username}}">
   </label>
   <br>
   <label for="gender"> Gender
-    <select name="gender" id="gender">
+    <select name="gender" id="gender" value="{{user.gender}}">
       <option value="male"> Male</option>
       <option value="female">Female</option>
     </select>
   </label>
   <br>
   <label for="interest"> what are you looking for?
-    <select name="interest" id="interest">
+    <select name="interest" id="interest" value="{{user.gender}}">
       <option value="male"> Male</option>
       <option value="female">Female</option>
     </select>
   </label>
   <br>
   <label for="plan"> Suscription plan
-    <select name="plan" id="plan">
+    <select name="plan" id="plan" value="{{user.plan}}">
       <option value="basic"> basic</option>
       <option value="super">Super</option>
     </select>
   </label>
   <br>
-  {{!-- $ npm install cloudinary multer multer-storage-cloudinary --}}
+{{!-- $ npm install cloudinary multer multer-storage-cloudinary --}}
   <label for="profilePicture">Show us your best picture:</label>
-  <input type="file" name="image" id="image" class="form-control-file" />
-  <button type="submit">submit</button>
-  <input type="text" name="latitude" id="latitude" style="display:none">
-  <input type="text" name="longitude" id="longitude" style="display:none">
-  <input type="text" name="lati" id="lati" style="display:none">
-  <input type="text" name="longi" id="longi" style="display:none">
+  <input type="file" name="image" id="image" class="form-control-file"/>
+<button type="submit" >submit</button>
+<input type="text" name="latitude" id="latitude" value="{{user.birthDate.latitude}}" style="display: none;">
+<input type="text" name="longitude" id="longitude" value="{{user.birthDate.latitude}}" style="display: none;">
 </form>
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiaXNhZmVycmFyYSIsImEiOiJja2hjbnB5aHkwMm4yMnJycnJzNjZ6bWYwIn0.7s8wi3l0DnRJskfCjlmXOg';
@@ -84,28 +83,11 @@
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl
   })
-  let mapi = gc.on('result', e => {
-    const { result: { center } } = e
+  let mapi= gc.on('result', e => {
+    const { result: { center, place_name } } = e
     document.querySelector('#longitude').value = center[0]
-    document.querySelector('#latitude').value = center[1]
-    console.log(center)
+    document.querySelector('#latitude').value = center[1]   
+    //document.querySelector('#address').value= place_nam
   })
-  map.addControl(gc);
-  // $addressInput.setAttribute('placeholder', place_name) 
-  document.querySelector('button').removeAttribute('disabled')
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const center = [
-        position.coords.longitude,
-        position.coords.latitude,
-      ];
-      document.querySelector('#lati').value = center[1]
-      document.querySelector('#longi').value = center[0]
-      console.log('center: ', center)
-    }, function () {
-      console.log('Error in the geolocation service.');
-    });
-  } else {
-    console.log('Browser does not support geolocation.');
-  }
+ map.addControl(gc);
 </script>

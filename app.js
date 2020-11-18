@@ -23,6 +23,7 @@ const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const makeAMatchRoutes = require('./routes/make-a-match');
+const matchesRoutes = require('./routes/matches');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -70,6 +71,7 @@ require('./configs/passport')(app)
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/', userRoutes);
-app.use('/', makeAMatchRoutes);   
+app.use('/', makeAMatchRoutes);
+app.use('/', matchesRoutes); 
 
 module.exports = app;
