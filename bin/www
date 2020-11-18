@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const http = require('http');
-
 let app = require('../app');
 
 // catch 404 and render a not-found.hbs template
@@ -21,9 +19,9 @@ app.use((err, req, res, next) => {
   }
 });
 
-let server = http.createServer(app);
+var http = require('http').createServer(app);
 
-server.on('error', error => {
+http.on('error', error => {
   if (error.syscall !== 'listen') { throw error }
 
   // handle specific listen errors with friendly messages
@@ -41,6 +39,15 @@ server.on('error', error => {
   }
 });
 
-server.listen(process.env.PORT, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT}`);
+var io = require('socket.io')(http);
+
+//Socket configuration
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+});
+
+http.listen(process.env.PORT, () => {
+  console.log(`connected 🔌`);
 });

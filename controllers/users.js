@@ -34,8 +34,7 @@ exports.profileDash = async (req, res) => {
 
 exports.updateAccount = async (req, res) => {
     const id= req.params
-    console.log(req.user)
-     const user= await User.findById(req.user._id)
+    const user= await User.findById(req.user._id)
     res.render(`auth/update`, {user})
 }
 
@@ -43,7 +42,8 @@ exports.updatedProfiles =  async (req, res) => {
     const id= req.params
     const {day, month, year, hour, minutes,latitude, longitude, username, lati, longi, gender, interest, plan} = req.body
     const logo = req.file.path
-    await User.findByIdAndUpdate( id, {
+
+    await User.findByIdAndUpdate( req.user._id, {
         birthDate:{
         date: day,
         month:month,
@@ -62,12 +62,12 @@ exports.updatedProfiles =  async (req, res) => {
         version:plan,
         profilePicture:logo
       }, {new:true})
-    res.redirect('/dashboard', req.user)
+    res.redirect('/dashboard')
 }
 
 exports.deleteAccount = async (req, res) => {
-    const id= req.params 
+    const id = req.user._id
     req.logout();
     await User.findByIdAndDelete(id)
-    res.render('/')
+    res.redirect('/')
 }

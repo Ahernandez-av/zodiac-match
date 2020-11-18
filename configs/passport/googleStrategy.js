@@ -18,7 +18,8 @@ passport.use(
 
       const newUser = await User.create({
         googleId: profile.id,
-        email: profile.emails[0].value
+        email: profile.emails[0].value,
+        first: true
       })
 
       done(null, newUser)

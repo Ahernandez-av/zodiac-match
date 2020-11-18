@@ -18,7 +18,8 @@ async (accessToken, refreshToken, profile, done) => {
 
   const newUser = await User.create({
     facebookId: res.id,
-    email: res.email
+    email: res.email,
+    first: true
   })
 
   done(null, newUser)

@@ -16,6 +16,7 @@ exports.newMatch = async (req, res) => {
 }
 
 exports.matchDetails = async (req, res) => {
-  
-  res.render('matches/details')
+  const match = await Match.findById(req.params.id)
+  console.log(match)
+  res.render('matches/details', match)
 }
