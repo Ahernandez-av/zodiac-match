@@ -7,19 +7,17 @@ const userSchema = new Schema({
   email: String,
   password: String,
   birthDate: {
-    day: Number,
+    date: Number,
     month: {
       type: Number,
       enum: [1,2,3,4,5,6,7,8,9,10,11,12]
     },
     year: Number,
     hour: Number,
-    minutes: Number,
-    place:{
-      lat: Number,
-      long: Number,
-      timeZone: Number
-    }
+    minute: Number,
+    latitude: Number,
+    longitud: Number,
+    timeZone: Number
   },
   username:String,
   location: String,
@@ -36,6 +34,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   }],
+  zodiacSign: String,
   version: {
     type: String,
     enum: ['basic', 'super']

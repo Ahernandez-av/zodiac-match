@@ -1,42 +1,30 @@
 const sdkClient = require('../sdk/sdk');
 const User = require("../models/User")
+const axios = require('axios')
 
-exports.matchPage = (req, res) => {
+exports.matchPage = async (req, res) => {
 
-  // create a male profile data
-  var maleData = {
-      'date': 25,
-      'month': 12,
-      'year': 1988,
-      'hour': 4,
-      'minute': 0,
-      'latitude': 25.123,
-      'longitude': 82.34,
-      'timezone': 5.5
-  };
-  
-  // create female data
-  var femaleData = {
-      'date': 27,
-      'month': 1,
-      'year': 1990,
-      'hour': 12,
-      'minute': 10,
-      'latitude': 25.123,
-      'longitude': 82.34,
-      'timezone': 5.5
-  };
-  
-  // match making api to be called
-  var resource = "love_compatibility_report/tropical";
-  
-  // call matchMakingCall method of VRClient for matching apis and print Response
-  sdkClient.matchMakingCall(resource, maleData, femaleData, function(error, result){
-  
-    if(error) console.log("Error returned!!");
-    console.log('Response has arrived from API server --');
-    console.log(result);
-  });
+  const currentUserId = req.user._id
+  const matches = []
 
-  res.render('make-a-match/match')
+  let users = await User.find( { _id: { $nin: [ currentUserId ] } } )
+  let match = [...users]
+
+  for (let i = match.length-1; i >= 0; i--) {
+    console.log(match[i].zodiacSign)
+    let report = await axios.post(`zodiac_compatibility/${req.user.zodiacSign}/${match[i].zodiacSign}`)
+    console.log(report.data.compatibility_percentage, '🔥🔥🔥🔥')
+    if (report.data.compatibility_percentage >= 75) {
+      matches.push({
+        user: users[i].email,
+        id: users[i]._id,
+        zodiacSign: users[i].zodiacSign,
+        score: report.data.compatibility_percentage,
+        report: report.data.compatibility_report
+      })
+    }
+  }
+
+  console.log(matches)
+  res.render('make-a-match/match', {matches})
 }

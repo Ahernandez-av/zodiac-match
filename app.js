@@ -7,7 +7,13 @@ const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const logger       = require('morgan');
 const path         = require('path');
-const flash      = require("connect-flash");
+const flash        = require("connect-flash");
+const axios        = require('axios')
+
+
+//Set axios defaults
+axios.defaults.baseURL = 'http://api.vedicrishiastro.com/v1/'
+axios.defaults.headers.common['Authorization'] = process.env.AUTH_TOKEN
 
 // Set up the database
 require('./configs/db.config');
