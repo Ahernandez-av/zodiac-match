@@ -16,7 +16,7 @@ exports.matchPage = async (req, res) => {
 
     if (report.data.compatibility_percentage >= 75) {
       matches.push({
-        user: users[i].email,
+        user: users[i].username,
         id: users[i]._id,
         zodiacSign: users[i].zodiacSign,
         score: report.data.compatibility_percentage,
