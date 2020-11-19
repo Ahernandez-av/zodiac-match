@@ -1,37 +1,59 @@
+<nav style="border-radius: 50%; display:flex; justify-content:space-between" >
+  <img href="config/{{_id}}" src="images/icon-apple.svg" style="border-radius: 50%;" height="70px" alt="zodiac-sign">
+  <img src="images/icon-apple.svg" style="border-radius: 50%; display:flex; justify-content:flex-end" height="40px" alt="zodiac-sign">
 
-<h1>Dashboard</h1>
-{{profilePicture}}
-<h2>{{username}}</h2>
-<h2><a href="update/{{_id}}"> Update profile</a></h2>
-<h2><a href="/logout">Logout</a></h2>
-<h2><a href="/delete/{{_id}}">Delete account</a></h2>
+</nav>
 
-<h2>Your Zodiac Sign</h2>
-<h2>Daily horoscope reading </h2>
-<h2>Your lucky number </h2>
+<div style="display:flex; justify-content:center; flex-direction:column">
+<h2 style="text-align: center;margin-top:10px; font-size:3vh">{{zodiac-sign}}Aries </h2><br>
+<img src="images/icon-apple.svg" style="border-radius: 50%; display:flex; " height="100px" alt="zodiac-sign">
+</div>
 
-<script>
-  if (navigator.geolocation) {
-    // Get current position
-    // The permissions dialog will pop up
-    navigator.geolocation.getCurrentPosition(function (position) {
-      // Create an object to match Mapbox's Lat-Lng array format
-      const center = [
-        position.coords.longitude,
-        position.coords.latitude,
-      ];
-     document.querySelector('#lati').value = center[1]
-    document.querySelector('#longi').value = center[0]
-     console.log('center: ', center)
-      // User granted permission
-      // Center the map in the position we got
-    }, function () {
-      // If something goes wrong
-      console.log('Error in the geolocation service.');
-    });
-  } else {
-    // Browser says: Nah! I do not support this.
-    console.log('Browser does not support geolocation.');
-  }
+{{!-- Today --}}
+<ul class="nav nav-tabs " id="myTab" role="tablist" style="display:flex; justify-content:center; flex-direction:row">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Health</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Personal life</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Emotions</a>
+  </li>
+    <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Travel</a>
+  </li>
+    <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Luck</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> <h4>{{A}}</h4></div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <h4>{{A}}</h4></div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> <h4>{{A}}</h4></div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> <h4>{{A}}</h4></div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> <h4>{{A}}</h4></div>
+</div>
 
-</script>
+<nav class="navbar fixed-bottom navbar-dark bg-dark" style="display:flex; justify-content:center; flex-direction:row" >
+
+ <div class="row row-cols-3" style="display:flex;  flex-direction:row" >
+   <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+     <img src="/images/icon-apple.svg" alt="matches" height="20px">
+  <a class="navbar-brand" href="/matches" style="font-size: 15px; text-align:center">Matches</a>
+</div>
+
+
+ <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+   <img src="/images/icon-apple.svg" alt="today" alt="matches" height="20px">
+  <a class="navbar-brand" href="/dashboard" style="font-size: 14px; text-align:center">Today</a>
+  </div>
+
+  <div class="col" style="display:flex; justify-content:center; flex-direction:column">
+    <img src="/images/icon-apple.svg" alt="make-a-match" alt="matches" height="20px">
+  <a class="navbar-brand" href="/make-a-match" style="font-size: 15px; display:flex; text-align:center" >Make a Match</a>
+  </div>
+
+</div>
+</nav>
+  

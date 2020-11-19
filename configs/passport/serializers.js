@@ -9,7 +9,6 @@ passport.deserializeUser((userIdFromSession, cb) => {
   User.findById(userIdFromSession)
   .then(userDocument => {
     const user = userDocument
-    user.password = null
     cb(null, user);
   })
   .catch(err => {

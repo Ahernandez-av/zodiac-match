@@ -1,0 +1,58 @@
+
+
+
+<h1>Matches</h1>
+{{#each notifications}}
+{{match}}
+<a href="/matches/{{_id}}/{{id}}">accept</a>
+{{/each}}
+
+{{#each matches}}
+{{matchUser}}
+<a href="/matches/{{_id}}">details</a>
+{{/each}}
+
+{{#each notifications}}
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="background-color: black;">
+      <p>{{match}}</p>
+     <a href="/matches/{{_id}}/{{id}}">accept</a>
+ 
+    {{/each}}
+
+ {{#each matches}} 
+<img src="/images/logo.svg" style="border-radius: 50%; display:flex; " height="100px" alt="zodiac-sign">
+      <img src="images/icon-apple.svg" style="border-radius: 50%; display:flex; " height="40px" alt="zodiac-sign">
+      <h2>{{matchUser}}</h2>
+     <a href="/matches/{{_id}}">details</a> 
+      <a href="/matches/{{_id}}"></a>
+      <img src="/images/logo.svg" class="d-block w-100" alt="...">
+  {{/each}}
+
+<a href="/matches/{{_id}}">details</a>
+
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark" style="display:flex; justify-content:center; flex-direction:row" >
+
+ <div class="row row-cols-3" style="display:flex;  flex-direction:row" >
+   <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+     <img src="/images/icon-apple.svg" alt="matches" height="20px">
+  <a class="navbar-brand" href="/matches" style="font-size: 15px; text-align:center">Matches</a>
+</div>
+
+
+ <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+   <img src="/images/icon-apple.svg" alt="today" alt="matches" height="20px">
+  <a class="navbar-brand" href="/dashboard" style="font-size: 14px; text-align:center">Today</a>
+  </div>
+
+  <div class="col" style="display:flex; justify-content:center; flex-direction:column">
+    <img src="/images/icon-apple.svg" alt="make-a-match" alt="matches" height="20px">
+  <a class="navbar-brand" href="/make-a-match" style="font-size: 15px; display:flex; text-align:center" >Make a Match</a>
+  </div>
+
+</div>
+</nav>
+  
+  

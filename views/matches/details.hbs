@@ -1,0 +1,51 @@
+<h1>Details</h1>
+<p id="room_id" style="display: none;">{{_id}}</p>
+<p id="room_user" style="display: none;">{{username}}</p>
+
+<ul id="messages"></ul>
+<form id="chat" action="">
+  <input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark" style="display:flex; justify-content:center; flex-direction:row" >
+
+ <div class="row row-cols-3" style="display:flex;  flex-direction:row" >
+   <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+     <img src="/images/icon-apple.svg" alt="matches" height="20px">
+  <a class="navbar-brand" href="/matches" style="font-size: 15px; text-align:center">Matches</a>
+</div>
+
+
+ <div class=" col" style="display:flex; justify-content:center; flex-direction:column" >
+   <img src="/images/icon-apple.svg" alt="today" alt="matches" height="20px">
+  <a class="navbar-brand" href="/dashboard" style="font-size: 14px; text-align:center">Today</a>
+  </div>
+
+  <div class="col" style="display:flex; justify-content:center; flex-direction:column">
+    <img src="/images/icon-apple.svg" alt="make-a-match" alt="matches" height="20px">
+  <a class="navbar-brand" href="/make-a-match" style="font-size: 15px; display:flex; text-align:center" >Make a Match</a>
+  </div>
+
+</div>
+</nav>
+  
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(function () {
+    let room = document.querySelector('#room_id').innerHTML
+    console.log(room)
+    var socket = io();
+    // call the server-side function 'adduser' and send one parameter (value of prompt)
+    socket.emit('room', room);
+    $('form').submit(function (e) {
+      e.preventDefault(); // prevents page reloading
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('chat message', function (msg) {
+      $('#messages').append($('<li>').text(msg));
+    });
+  });
+</script>

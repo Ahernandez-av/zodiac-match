@@ -7,7 +7,13 @@ const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const logger       = require('morgan');
 const path         = require('path');
-const flash      = require("connect-flash");
+const flash        = require("connect-flash");
+const axios        = require('axios')
+
+
+//Set axios defaults
+axios.defaults.baseURL = 'http://api.vedicrishiastro.com/v1/'
+axios.defaults.headers.common['Authorization'] = process.env.AUTH_TOKEN
 
 // Set up the database
 require('./configs/db.config');
@@ -16,6 +22,8 @@ require('./configs/db.config');
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const makeAMatchRoutes = require('./routes/make-a-match');
+const matchesRoutes = require('./routes/matches');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -62,6 +70,8 @@ require('./configs/passport')(app)
 // Routes middleware
 app.use('/', index);
 app.use('/', authRoutes);
-app.use('/', userRoutes);   
+app.use('/', userRoutes);
+app.use('/', makeAMatchRoutes);
+app.use('/', matchesRoutes); 
 
 module.exports = app;

@@ -1,0 +1,24 @@
+<h1>Match</h1>
+{{#each matches}}
+<h2>{{matchUser}}</h2>
+<p>{{matchZodiacSign}}</p>
+<p>{{score}}</p>
+<p>{{report}}</p>
+
+<a href="/matches">make a match</a>
+
+
+<form action="/matches" method="post">
+  <input type="text" name="matchId" value="{{matchId}}" style="display:none">
+  <input type="text" name="matchUser" value="{{matchUser}}" style="display:none">
+  <input type="text" name="matchZodiacSign" value="{{matchZodiacSign}}" style="display:none">
+  <input type="number" name="owner" value="{{owner}}" style="display:none">
+  <input type="number" name="ownerZodiacSign" value="{{ownerZodiacSign}}" style="display:none">
+  <input type="number" name="score" value="{{score}}" style="display:none">
+  <input type="text" name="report" value="{{report}}" style="display:none">
+
+  <button type="submit">Make Match</button>
+</form>
+
+{{/each}}
+

@@ -5,7 +5,7 @@ const bcrypt        = require('bcrypt');
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'password',
+    passwordField: 'password'
   }, 
   (email, password, done) => {
     User.findOne({ email })
@@ -19,7 +19,7 @@ passport.use(new LocalStrategy({
         done(null, false, { message: 'Incorrect password' });
         return;
       }
-     
+
       done(null, foundUser);
     })
     .catch(err => done(err));

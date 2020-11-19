@@ -1,25 +1,41 @@
+<h2 style="text-align: center;margin-top:70px; font-size:4vh">Login</h2><br>
+{{!-- login local --}}
+<form action="/login" method="POST" id="form-container" style="padding:5vh" >
+<div style="margin-top: 10vh;">
+  <div class="form-group ">
+    <input id="email" type="text" name="email"  class="form-control" placeholder="email">
+  </div>
 
-<h2>Login</h2>
+  <div class="form-group ">
+    <input id="password" type="password" name="password"  class="form-control"  placeholder="Password">
+  </div>
+</div>
 
-<form action="/login" method="POST" id="form-container">
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="JonSnow@mail.com">
+{{!-- login social --}}
+ <div class="row row-cols-2" style="display: flex; justify-content:center;" >
+   <div class="border col-6" >
+ <img src="/images/icon-gmail.svg" height="15px" width="auto" alt="icon-google">
+<a href="/auth/google">Google</a>
+</div>
 
-  <br><br>
+  <div class="border col-6" style="display: flex; justify-content:center;" >
+     <img src="/images/icon-apple.svg" alt="icon-face" height="15px" width="auto">
+    <a href="/auth/facebook">Facebook</a>
+  </div>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
+</div>
+
+   {{#if message }}
     <div class="error-message">{{ message }}</div>
   {{/if}}
-
-  <br><br>
-
-  <button>Login</button>
+{{!-- button --}}
+<br>
+<button type="button" class="btn btn-success btn-lg btn-block">Success</button>
+<br>
 
   <p class="account-message">
     Don't have an account yet?
-    <a href="/signup">Signup</a>
-  </p>
+    <a href="/signup">Signup</a> 
+     </p>
 </form>
+

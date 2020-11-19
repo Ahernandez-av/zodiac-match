@@ -1,14 +1,58 @@
-<h1>Profile</h1>
 
-<form action="/create-profile" enctype="multipart/form-data" method="post">
-  <br>
-  <h2>Birthdate</h2>
-  <label for="day"> Day
-    <input type="Number" name="day" id="day">
-  </label>
-  <br>
-  <label for="month"> Month
-    <select name="month" id="month">
+<h2  style=" text-align: center;margin-top:20px; font-size:4vh">New user</h2><br>
+
+<form action="/create-profile" enctype="multipart/form-data" method="post" style="margin: 0 20px;" >
+{{!-- info user --}}
+  <h2 style="text-align: center; font-size:2vh">User information</h2>
+
+{{!-- username --}}
+  <div class="form-row" >
+    <div class="col-md-6 mb-3">
+      <input type="text" name="username" id="username" type="text" class="form-control" id="validationServer01" placeholder="username"required>
+        <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+</div>
+
+{{!-- gender --}}
+<div style="margin: 0 20px;">
+ <div class="row row-cols-2" style="10px" >
+      <select style=" margin-right:10px"name="gender" class="custom-select col-4" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+        <option value="0">Gender</option>
+        <option  value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div id="validationServer04Feedback" class="invalid-feedback">
+      </div>
+{{!-- interest --}}
+ <div>
+      <select name="interest" class="custom-select col " id="validationServer04" aria-describedby="validationServer04Feedback" required>
+      <option value="0"> what are you looking for?</option>
+        <option  value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div id="validationServer04Feedback" class="invalid-feedback">
+      </div>
+      </div>
+    </div>
+
+{{!-- birth info --}}
+  <h2 style="text-align: center;margin-top:20px; font-size:2vh">Birth information</h2>
+
+{{!-- day --}}
+<div class="row row-cols-3" style="margin-left: 9px" >   
+   <input type="Number" name="day" class="form-control col-3" id="validationServer01" placeholder="day" required > 
+      <div class="valid-feedback">
+        Looks good!
+        </div>
+     
+<br>
+
+<div style="margin-left: 9px" >   
+     {{!-- <label for="month" style="color: white; font-size:smaller" > month</label> --}}
+      <select name="month" class="custom-select col" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+      <option value="0"> Month</option>
       <option value="1"> January</option>
       <option value="2">February</option>
       <option value="3"> March</option>
@@ -21,68 +65,73 @@
       <option value="10"> October</option>
       <option value="11">November</option>
       <option value="12"> December</option>
-    </select>
-  </label>
-  <br>
-  <label for="year"> Year
-    <input type="Number" name="year" id="year">
-  </label>
-  <br>
-  <label for="hour"> Hour (24 hour format)
-    <input type="Number" name="hour" id="hour" placeholder="Example: 9, 18">
-  </label>
-  <br>
-  <label for="minutes"> Minutes
-    <input type="Number" name="minutes" id="minutes" placeholder="Example: 24, 3">
-  </label>
-  <br>
+      </select>
+      <div id="validationServer04Feedback" class="invalid-feedback">
+      </div>
+    </div>
 
-  <label for="place"> Place of birth
-  </label>
-  <div id="map" style="width: 400px; height: 300px"></div>
+{{!-- year --}}
+<div  style="margin-left: 9px" >   
 
+    <input type="Number" name="year"class="form-control is-valid" id="validationServer01" placeholder="year" value="year" required > 
+      <div class="valid-feedback">
+      </div>
+ </div>  
+</div>
+
+ <div class="row row-cols" style="margin-left: 9px" >
+{{!-- hour --}}
+    <input style="margin-right: 5px" type="Number" name="hour"class="form-control col" id="validationServer01" placeholder="hour" value="hour" required > 
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+ 
+{{!-- minute --}}
+    <input type="Number" name="minutes"class="form-control col" id="validationServer01" placeholder="minutes" value="minutes" required > 
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+ </div>  
+</div>
+<br>
+</div>
+
+{{!-- birth place --}}
+     <label for="place" style="color: white; font-size:2vh; text-align: center;" > Place of birth</label>
+
+     {{!-- map --}}
+  <div id="map" style="width:100%; height: 250px"></div>
   <hr>
-  <h2>Profile information</h2>
-  <label for="username"> Username
-    <input type="text" name="username" id="username">
-  </label>
-  <br>
+{{!-- picture --}}
+   <label style="color: white; font-size:small" for="image">Show us your best picture:</label>
+  <input type="file" name="image" id="image" class="form-control-file" style="color: white;"/>
+<br>
+{{!-- terms and conditions --}}
+<div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+      <label class="form-check-label" for="invalidCheck3" style="color: white;">
+        Agree to terms and conditions
+      </label>
+      <div  id="invalidCheck3Feedback" class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+
+  {{!-- button --}}
+  <button class="btn btn-success btn-lg btn-block" style="margin-bottom: 20px" type="submit">Create account</button>
+
+ {{!-- geolocalization --}}
 
 
-  <label for="gender"> Gender
-    <select name="gender" id="gender">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-  <label for="interest"> what are you looking for?
-    <select name="interest" id="interest">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-
-  <label for="plan"> Suscription plan
-    <select name="plan" id="plan">
-      <option value="basic"> basic</option>
-      <option value="super">Super</option>
-    </select>
-  </label>
-  <br>
-
-{{!-- $ npm install cloudinary multer multer-storage-cloudinary --}}
-  <label for="profilePicture">Show us your best picture:</label>
-  <input type="file" name="image" id="image" class="form-control-file" />
-
-<button type="submit" >submit</button>
-
-<input type="text" name="latitude" id="latitude" style="display:none">
-<input type="text" name="longitude" id="longitude" style="display:none">
-<input type="text" name="lati" id="lati" style="display:none">
-<input type="text" name="longi" id="lati" style="display:none">
+  <input type="text" name="latitude" id="latitude" style="display:none">
+  <input type="text" name="longitude" id="longitude" style="display:none">
+  <input type="text" name="lati" id="lati" style="display:none">
+  <input type="text" name="longi" id="longi" style="display:none">
 </form>
+
+
 
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiaXNhZmVycmFyYSIsImEiOiJja2hjbnB5aHkwMm4yMnJycnJzNjZ6bWYwIn0.7s8wi3l0DnRJskfCjlmXOg';
@@ -90,34 +139,28 @@
     container: "map",
     style: "mapbox://styles/mapbox/streets-v11"
   });
-
   const gc = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl
-
   })
-
- 
-  let mapi= gc.on('result', e => {
+  let mapi = gc.on('result', e => {
     const { result: { center } } = e
     document.querySelector('#longitude').value = center[0]
     document.querySelector('#latitude').value = center[1]
     console.log(center)
   })
   map.addControl(gc);
-
-   // $addressInput.setAttribute('placeholder', place_name) 
-    document.querySelector('button').removeAttribute('disabled')
-
+  // $addressInput.setAttribute('placeholder', place_name) 
+  document.querySelector('button').removeAttribute('disabled')
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       const center = [
         position.coords.longitude,
         position.coords.latitude,
       ];
-     document.querySelector('#lati').value = center[1]
-    document.querySelector('#longi').value = center[0]
-     console.log('center: ', center)
+      document.querySelector('#lati').value = center[1]
+      document.querySelector('#longi').value = center[0]
+      console.log('center: ', center)
     }, function () {
       console.log('Error in the geolocation service.');
     });
@@ -125,3 +168,5 @@
     console.log('Browser does not support geolocation.');
   }
 </script>
+
+
