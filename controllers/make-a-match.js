@@ -25,6 +25,11 @@ exports.matchPage = async (req, res) => {
     }
   }
 
+  if (matches.length == 0) {
+    console.log('no match 😢')
+    res.redirect('/dashboard')
+  }
+
   console.log(matches)
   res.render('make-a-match/match', {matches})
 }

@@ -50,19 +50,18 @@ router.post("/signup", (req, res, next) => {
     .then((user) => {
       req.user = user
       console.log(req.user)
-      res.redirect("/dashboard");
+      next()
     })
     .catch(err => {
       res.render("/signup", { message: "Something went wrong" });
     })
   });
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/login",
-    failureFlash: true,
-    passReqToCallback: true
-  })
-});
+}, passport.authenticate("local", {
+  successRedirect: "/dashboard",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
 
 router.get("/logout", (req, res) => {
   req.logout();

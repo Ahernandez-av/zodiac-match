@@ -15,7 +15,7 @@ const userSchema = new Schema({
     hour: Number,
     minute: Number,
     latitude: Number,
-    longitud: Number,
+    longitude: Number,
     timeZone: Number
   },
   first: {
@@ -39,6 +39,7 @@ const userSchema = new Schema({
     ref:'Match'
   }],
   zodiacSign: String,
+  planet: String,
   post: [{
     type: Schema.Types.ObjectId,
     ref:'Post'

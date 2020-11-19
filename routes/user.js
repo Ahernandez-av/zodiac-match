@@ -4,13 +4,11 @@ const uploadPicture = require('../configs/cloudinary');
 const {
   createProfile, 
   processProfiles, 
-  profileDash, 
   deleteAccount, 
   updateAccount, 
   updatedProfiles
 }= require('../controllers/users')
 
-router.get('/dashboard', profileDash)
 router.get('/create-profile', createProfile)
 router.post('/create-profile', uploadPicture.single('image'), processProfiles)
 router.get('/update/:id',  updateAccount)
