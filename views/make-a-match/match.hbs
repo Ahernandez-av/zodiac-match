@@ -1,16 +1,18 @@
 <h1>Match</h1>
 {{#each matches}}
-<h2>{{matchUser}}</h2>
+<h2>{{matchUsername}}</h2>
 <p>{{matchZodiacSign}}</p>
 <p>{{score}}</p>
 <p>{{report}}</p>
 
 <form action="/matches" method="post">
   <input type="text" name="matchId" value="{{matchId}}" style="display:none">
-  <input type="text" name="matchUser" value="{{matchUser}}" style="display:none">
+  <input type="text" name="matchUsername" value="{{matchUsername}}" style="display:none">
   <input type="text" name="matchZodiacSign" value="{{matchZodiacSign}}" style="display:none">
-  <input type="number" name="owner" value="{{owner}}" style="display:none">
-  <input type="number" name="ownerZodiacSign" value="{{ownerZodiacSign}}" style="display:none">
+  <input type="text" name="matchProfilePicture" value="{{matchProfilePicture}}" style="display:none">
+  <input type="text" name="ownerUsername" value="{{ownerUsername}}" style="display:none">
+  <input type="text" name="ownerZodiacSign" value="{{ownerZodiacSign}}" style="display:none">
+  <input type="text" name="ownerProfilePicture" value="{{ownerProfilePicture}}" style="display:none">
   <input type="number" name="score" value="{{score}}" style="display:none">
   <input type="text" name="report" value="{{report}}" style="display:none">
 

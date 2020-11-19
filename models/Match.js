@@ -6,10 +6,12 @@ const matchSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref:'User'
     },
-    matchUser: String,
+    matchUsername: String,
     matchZodiacSign: String,
-    owner: String,
+    matchProfilePicture: String,
+    ownerUsername: String,
     ownerZodiacSign: String,
+    ownerProfilePicture: String,
     report: String,
     score: Number,
     chat: []

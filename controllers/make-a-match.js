@@ -17,10 +17,12 @@ exports.matchPage = async (req, res) => {
     if (report.data.compatibility_percentage >= 75) {
       matches.push({
         matchId: users[i]._id,
-        matchUser: users[i].username,
+        matchUsername: users[i].username,
         matchZodiacSign: users[i].zodiacSign,
-        owner: req.user.username,
+        matchProfilePicture: users[i].profilePicture,
+        ownerUsername: req.user.username,
         ownerZodiacSign: req.user.zodiacSign,
+        ownerProfilePicture: req.user.profilePicture,
         report: report.data.compatibility_report,
         score: report.data.compatibility_percentage
       })
