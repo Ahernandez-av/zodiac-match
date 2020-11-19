@@ -1,4 +1,7 @@
 <h1>Details</h1>
+<p id="room_id" style="display: none;">{{_id}}</p>
+<p id="room_user" style="display: none;">{{username}}</p>
+
 <ul id="messages"></ul>
 <form id="chat" action="">
   <input id="m" autocomplete="off" /><button>Send</button>
@@ -7,8 +10,16 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+
   $(function () {
+    let room = document.querySelector('#room_id').innerHTML
+    console.log(room)
     var socket = io();
+
+
+    // call the server-side function 'adduser' and send one parameter (value of prompt)
+    socket.emit('room', room);
+
     $('form').submit(function (e) {
       e.preventDefault(); // prevents page reloading
       socket.emit('chat message', $('#m').val());
@@ -19,4 +30,5 @@
       $('#messages').append($('<li>').text(msg));
     });
   });
+
 </script>

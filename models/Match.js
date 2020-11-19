@@ -2,12 +2,14 @@ const { Schema, model } = require('mongoose')
 
 const matchSchema = new Schema(
   {
-    id: {
+    matchId: {
       type: Schema.Types.ObjectId,
       ref:'User'
     },
-    user: String,
-    zodiacSign: String,
+    matchUser: String,
+    matchZodiacSign: String,
+    owner: String,
+    ownerZodiacSign: String,
     report: String,
     score: Number,
     chat: []

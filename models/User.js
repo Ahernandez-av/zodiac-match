@@ -40,9 +40,9 @@ const userSchema = new Schema({
   }],
   zodiacSign: String,
   planet: String,
-  post: [{
+  notifications: [{
     type: Schema.Types.ObjectId,
-    ref:'Post'
+    ref:'Notification'
   }]
 
 }, {

@@ -1,5 +1,9 @@
 <h1>Matches</h1>
+{{#each notifications}}
+{{match}}
+<a href="/matches/{{_id}}/{{id}}">accept</a>
+{{/each}}
 {{#each matches}}
-{{user}}
+{{matchUser}}
 <a href="/matches/{{_id}}">details</a>
 {{/each}}

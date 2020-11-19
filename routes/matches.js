@@ -4,7 +4,8 @@ const routeGuard = require('../middlewares/route-guard')
 const {
   getMatches,
   newMatch,
-  matchDetails
+  matchDetails,
+  acceptMatch
 } = require('../controllers/matches')
 
 router.get('/matches', getMatches)
@@ -12,5 +13,7 @@ router.get('/matches', getMatches)
 router.post('/matches', newMatch)
 
 router.get('/matches/:id', matchDetails)
+
+router.get('/matches/:notification_id/:match_id', acceptMatch)
 
 module.exports = router

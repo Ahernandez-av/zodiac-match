@@ -43,10 +43,22 @@ var io = require('socket.io')(http);
 
 //Socket configuration
 io.on('connection', (socket) => {
+  console.log('a user connected');
+  console.log(socket.room)
+  socket.on('room', (room) => {
+    socket.room = room
+    console.log('new room ' + room)
+    socket.join(room)
+  })
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    console.log(socket.room)
+    io.to(socket.room).emit('chat message', msg);
   });
 });
+
 
 http.listen(process.env.PORT, () => {
   console.log(`connected 🔌`);
