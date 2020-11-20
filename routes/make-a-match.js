@@ -1,6 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const sdkClient = require('../sdk/sdk');
 const routeGuard = require('../middlewares/route-guard')
 const {
   matchPage,

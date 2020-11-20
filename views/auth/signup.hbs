@@ -1,27 +1,59 @@
-<h2>Signup</h2>
+<h2 style="text-align: center;margin-top:70px; font-size:4vh">Signup</h2><br>
+{{!-- login local --}}
+<form action="/signup" method="POST" id="form-container" style="padding:5vh">
+  <div style="margin-top: 10vh;">
+    <div class="form-group ">
+      <input id="email" type="text" name="email" class="form-control" placeholder="email">
+    </div>
 
-<form action="/signup" method="POST" id="form-container">
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="JonSnow@mail">
+    <div class="form-group ">
+      <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+    </div>
+  </div>
 
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
   {{#if message }}
   <div class="error-message">{{ message }}</div>
   {{/if}}
+  {{!-- button --}}
+  <br>
+  <button class="btn btn-success btn-lg btn-block">Create account</button>
+  <br>
 
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
 </form>
 
-<a href="/auth/facebook">facebook</a>
-<a href="/auth/google">google</a>
+<div class="fixed-bottom mb-5">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col text-white text-center">
+        Do you already have an account?
+        <a href="/login">Login</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a href="/auth/google">
+          <div class="btn btn-outline-light d-flex justify-content-center">
+            <div>
+              <img src="/images/icon-gmail.svg">
+            </div>
+            <div class="d-flex align-items-center ml-3">
+              <p class="m-0">Google</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="/auth/facebook">
+          <div class="btn btn-outline-light d-flex justify-content-center">
+            <div>
+              <img src="/images/facebook.svg">
+            </div>
+            <div class="d-flex align-items-center ml-3">
+              <p class="m-0">Facebook</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

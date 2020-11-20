@@ -9,7 +9,6 @@ const logger       = require('morgan');
 const path         = require('path');
 const flash        = require("connect-flash");
 const axios        = require('axios')
-const expressHbs   = require('express-handlebars');
 
 
 //Set axios defaults

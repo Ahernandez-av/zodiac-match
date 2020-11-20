@@ -1,4 +1,3 @@
-const sdkClient = require('../sdk/sdk');
 const User = require("../models/User")
 const axios = require('axios')
 
@@ -35,7 +34,7 @@ exports.matchPage = async (req, res) => {
   }
 
   console.log(matches)
-  res.render('make-a-match/match', {matches})
+  res.render('make-a-match/match', {matches:matches, user:req.user})
 }
 
 exports.makeMatch = (req, res) => {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 600 600">
+<metadata>
+<vectornator:setting key="DimensionsVisible" value="1"/>
+<vectornator:setting key="SnapToGrid" value="0"/>
+<vectornator:setting key="SnapToPoints" value="0"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="SnapToEdges" value="0"/>
+<vectornator:setting key="DisplayWhiteBackground" value="0"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="GridSpacing" value="36"/>
+<vectornator:setting key="Units" value="Pixels"/>
+<vectornator:setting key="DynamicGuides" value="0"/>
+<vectornator:setting key="New" value="1"/>
+</metadata>
+<defs/>
+<g id="Capa 1" vectornator:layerName="Capa 1">
+<path stroke="#ffffff" stroke-width="1.44" d="M294.627+25.4171C148.192+25.4171+29.4752+148.095+29.4752+299.438C29.4753+450.78+148.192+573.458+294.627+573.458L308.678+573.458C455.114+573.458+573.831+450.78+573.831+299.438C573.831+235.461+552.605+176.595+517.051+129.963C468.5+66.283+393.212+25.4171+308.678+25.4171L294.627+25.4171ZM429.342+144.905C453.083+151.023+517.984+183.035+503.951+277.755C495.901+332.093+463.9+373.665+424.725+410.564C385.357+447.644+344.652+483.121+304.609+519.401C265.764+484.385+218.508+435.322+191.601+408.231C164.695+381.14+139.98+366.774+109.343+312.176C74.9695+250.918+98.7596+155.847+200.653+143.094C242.735+137.827+290.392+175.142+301.724+205.335C334.244+138.745+414.439+141.065+429.342+144.905Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#ffffff" stroke-width="1.44" d="M454.079+346.768L457.999+346.768C458.391+346.768+458.708+347.086+458.708+347.478L458.708+347.478C458.708+347.87+458.391+348.188+457.999+348.188L454.079+348.188C453.687+348.188+453.369+347.87+453.369+347.478L453.369+347.478C453.369+347.086+453.687+346.768+454.079+346.768Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+</svg>
