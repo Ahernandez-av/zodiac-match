@@ -1,25 +1,58 @@
+<h2 style="text-align: center;margin-top:70px; font-size:4vh">Login</h2><br>
+{{!-- login local --}}
+<form action="/login" method="POST" id="form-container" style="padding:5vh">
+  <div style="margin-top: 10vh;">
+    <div class="form-group ">
+      <input id="email" type="text" name="email" class="form-control" placeholder="email">
+    </div>
 
-<h2>Login</h2>
+    <div class="form-group ">
+      <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+    </div>
+  </div>
 
-<form action="/login" method="POST" id="form-container">
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="JonSnow@mail.com">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
   {{#if message }}
-    <div class="error-message">{{ message }}</div>
+  <div class="error-message">{{ message }}</div>
   {{/if}}
+  {{!-- button --}}
+  <br>
+  <button class="btn btn-success btn-lg btn-block">Success</button>
+  <br>
 
-  <br><br>
-
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/signup">Signup</a>
-  </p>
 </form>
+
+<div class="fixed-bottom mb-5">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col text-white text-center">
+        Don't have an account yet? <a href="/signup">Signup</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a href="/auth/google">
+          <div class="btn btn-outline-light d-flex justify-content-center">
+            <div>
+              <img src="/images/icon-gmail.svg">
+            </div>
+            <div class="d-flex align-items-center ml-3">
+              <p class="m-0">Google</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="/auth/facebook">
+          <div class="btn btn-outline-light d-flex justify-content-center">
+            <div>
+              <img src="/images/icon-apple.svg">
+            </div>
+            <div class="d-flex align-items-center ml-3">
+              <p class="m-0">Facebook</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

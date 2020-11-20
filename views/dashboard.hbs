@@ -1,21 +1,108 @@
-<h1>Dashboard</h1>
-<ul>
-  <li><a href="/make-a-match">Make a Match</a></li>
-  <li><a href="/today">Today</a></li>
-  <li><a href="/matches">Matches</a></li>
-  <li><a href="update/{{_id}}"> Update profile</a></li>
-  <li><a href="delete/{{_id}}"> delete profile</a></li>
-</ul>
+<nav class="position-absolute w-100 px-4 pt-3" style="z-index:5">
+  <div class="d-flex justify-content-between align-items-center">
+    <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <img class="rounded-circle" style="height: 50px" src="images/user.png" alt="User Profile Page">
+    </a>
+  </div>
+  <div class="collapse mt-2" id="collapseExample">
+    <div class="card text-center text-white" id="menu-card">
+      <div class="card-body">
+        <h5 class="card-title mb-4">{{user.username}}</h5>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div>
+                <img class="rounded-circle mx-auto d-block mb-3" style="height: 50px;" src="images/user.png"
+                  alt="Zodiac Sign">
+              </div>
+              <p>Aries</p>
+            </div>
+            <div class="col">
+              <div>
+                <img class="rounded-circle mx-auto d-block mb-3" style="height: 50px;" src="images/user.png"
+                  alt="Zodiac Sign">
+              </div>
+              <p>Planet</p>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex flex-column">
+            <a href="/logout" class="btn btn-danger">Logout</a>
+            <hr>
+            <a href="/update/{{user._id}}" class="btn btn-outline-light mb-2">Update User</a>
+            <a href="/delete/{{user._id}}" class="btn btn-outline-danger">Delete User</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</nav>
 
-<h3>health</h3>
-<p>{{health}}</p>
-<h3>Personal Life</h3>
-<p>{{personal_life}}</p>
-<h3>Profession</h3>
-<p>{{profession}}</p>
-<h3>Emotions</h3>
-<p>{{emotions}}</p>
-<h3>Travel</h3>
-<p>{{travel}}</p>
-<h3>Luck</h3>
-<p>{{luck}}</p>
+<div class="container h-100 text-white" style="padding-top: 20%; padding-left:20px; padding-right:20px">
+
+  <div class="d-flex flex-column text-center mb-5">
+    <h4 class="mb-3 text-uppercase" style="font-weight: 700;">{{user.zodiacSign}}</h4>
+    <img src="images/icon-apple.svg" class="rounded-circle h-50" alt="zodiac-sign">
+  </div>
+
+  <ul class="nav nav-tabs" style="display:flex; justify-content:center; flex-direction:row">
+    <li class="active nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#health">Health</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#personal-life">Personal Life</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#emotions">Emotions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#travel">Travel</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#luck">Luck</a>
+    </li>
+  </ul>
+
+  <div class="tab-content text-white pt-3">
+    <div id="health" class="tab-pane fade show active">
+      {{astro.health}}
+    </div>
+    <div id="personal-life" class="tab-pane fade">
+      {{astro.personal_life}}
+    </div>
+    <div id="emotions" class="tab-pane fade">
+      {{astro.emotions}}
+    </div>
+    <div id="travel" class="tab-pane fade">
+      {{astro.travel}}
+    </div>
+    <div id="luck" class="tab-pane fade">
+      {{astro.luck}}
+    </div>
+  </div>
+
+</div>
+
+<nav class="navbar fixed-bottom navbar-dark" id="bottom-nav">
+  <div class="container">
+    <div class="row justify-content-between w-100">
+      <div class="col-4 btn-nav-bottom">
+        <a class="d-flex flex-column justify-content-center" href="/matches">
+          <img src="/images/icon-apple.svg">
+          <p class="mt-2">Matches</p>
+        </a>
+      </div>
+      <div class="col-4">
+        <a class="d-flex flex-column justify-content-center" href="/dashboard">
+          <img src="/images/icon-apple.svg">
+          <p class="mt-2">today</p>
+        </a>
+      </div>
+      <div class="col-4">
+        <a class="d-flex flex-column justify-content-center" href="/make-a-match">
+          <img src="/images/icon-apple.svg">
+          <p class="mt-2">Make a match</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

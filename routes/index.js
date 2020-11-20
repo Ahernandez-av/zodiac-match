@@ -12,7 +12,7 @@ router.get('/dashboard', routeGuard, profileCheck, async (req, res) => {
 
   let astro = await axios.post(`sun_sign_prediction/daily/${req.user.zodiacSign}`)
 
-  res.render('dashboard', astro.data.prediction)
+  res.render('dashboard', {astro:astro.data.prediction, user:req.user})
 })
 
 

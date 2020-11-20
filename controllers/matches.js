@@ -28,7 +28,7 @@ exports.newMatch = async (req, res) => {
 exports.matchDetails = async (req, res) => {
   const match = await Match.findById(req.params.id)
   console.log(match)
-  res.render('matches/details', match)
+  res.render('matches/details', { match: match, user: req.user })
 }
 
 exports.acceptMatch = async (req, res) => {

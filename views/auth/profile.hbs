@@ -1,79 +1,156 @@
-<h1>Profile</h1>
-<form action="/create-profile" enctype="multipart/form-data" method="post">
+<div style="padding: 20px">
+  <h2 style=" text-align: center;margin-top:20px; font-size:4vh">
+    New user
+  </h2>
   <br>
-  <h2>Birthdate</h2>
-  <label for="day"> Day
-    <input type="Number" name="date" id="date">
-  </label>
-  <br>
-  <label for="month"> Month
-    <select name="month" id="month">
-      <option value="1"> January</option>
-      <option value="2">February</option>
-      <option value="3"> March</option>
-      <option value="4">April</option>
-      <option value="5"> May</option>
-      <option value="6">June</option>
-      <option value="7"> July</option>
-      <option value="8">August</option>
-      <option value="9">September</option>
-      <option value="10"> October</option>
-      <option value="11">November</option>
-      <option value="12"> December</option>
-    </select>
-  </label>
-  <br>
-  <label for="year"> Year
-    <input type="Number" name="year" id="year">
-  </label>
-  <br>
-  <label for="hour"> Hour (24 hour format)
-    <input type="Number" name="hour" id="hour" placeholder="Example: 9, 18">
-  </label>
-  <br>
-  <label for="minute"> Minutes
-    <input type="Number" name="minute" id="minute" placeholder="Example: 24, 3">
-  </label>
-  <br>
-  <label for="place"> Place of birth
-  </label>
-  <div id="map" style="width: 400px; height: 300px"></div>
-  <hr>
-  <h2>Profile information</h2>
-  <label for="username"> Username
-    <input type="text" name="username" id="username">
-  </label>
-  <br>
-  <label for="gender"> Gender
-    <select name="gender" id="gender">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-  <label for="interest"> what are you looking for?
-    <select name="interest" id="interest">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-  <label for="plan"> Suscription plan
-    <select name="plan" id="plan">
-      <option value="basic"> basic</option>
-      <option value="super">Super</option>
-    </select>
-  </label>
-  <br>
-  {{!-- $ npm install cloudinary multer multer-storage-cloudinary --}}
-  <label for="profilePicture">Show us your best picture:</label>
-  <input type="file" name="image" id="image" class="form-control-file" />
-  <button type="submit">submit</button>
-  <input type="text" name="latitude" id="latitude" style="display:none">
-  <input type="text" name="longitude" id="longitude" style="display:none">
-  <input type="text" name="lati" id="lati" style="display:none">
-  <input type="text" name="longi" id="longi" style="display:none">
-</form>
+
+  <form action="/create-profile" enctype="multipart/form-data" method="post">
+
+    {{!-- info user --}}
+    <h2 style="text-align: center; font-size:2vh">User information</h2>
+
+    {{!-- username --}}
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <input type="text" name="username" id="username" type="text" class="form-control" id="validationServer01"
+          placeholder="username" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    {{!-- gender --}}
+    <div class="form-row">
+      <div class="form-group col-5">
+        <select name="gender" class="custom-select" id="validationServer04"
+          aria-describedby="validationServer04Feedback" required>
+          <option value="0">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+      {{!-- interest --}}
+      <div class="form-group col-7">
+        <select name="interest" class="custom-select" id="validationServer04"
+          aria-describedby="validationServer04Feedback" required>
+          <option value="0"> what are you looking for?</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+    </div>
+
+    {{!-- birth info --}}
+    <h2 style="text-align: center;margin-top:20px; font-size:2vh">Birth information</h2>
+
+    {{!-- day --}}
+    <div class="form-row">
+      <div class="form-group col-4">
+        <input type="Number" name="date" class="form-control" id="validationServer01" placeholder="day" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="form-group col-4">
+        {{!-- <label for="month" style="color: white; font-size:smaller" > month</label> --}}
+        <select name="month" class="custom-select" id="validationServer04" aria-describedby="validationServer04Feedback"
+          required>
+          <option value="0"> Month</option>
+          <option value="1"> January</option>
+          <option value="2">February</option>
+          <option value="3"> March</option>
+          <option value="4">April</option>
+          <option value="5"> May</option>
+          <option value="6">June</option>
+          <option value="7"> July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10"> October</option>
+          <option value="11">November</option>
+          <option value="12"> December</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+
+      {{!-- year --}}
+      <div class="form-group col-4">
+        <input type="Number" name="year" class="form-control" id="validationServer01" placeholder="year" value="year"
+          required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      {{!-- hour --}}
+      <div class="form-group col-6">
+        <input type="Number" name="hour" class="form-control" id="validationServer01" placeholder="hour" value="hour"
+          required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      {{!-- minute --}}
+      <div class="form-group col-6">
+        <input type="Number" name="minute" class="form-control" id="validationServer01" placeholder="minutes"
+          value="minutes" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    {{!-- birth place --}}
+    <h2 style="text-align: center; font-size:2vh">Place of Birth</h2>
+
+    {{!-- map --}}
+    <div>
+      <div id="map" class="rounded" style="width:100%; height: 250px"></div>
+    </div>
+    <hr>
+
+    {{!-- picture --}}
+    <div class="form-group">
+      <label style="color: white; font-size:small" for="image">Show us your best picture:</label>
+      <input type="file" name="image" id="image" class="form-control-file" style="color: white;" />
+    </div>
+
+
+    {{!-- terms and conditions --}}
+    <div class="form-group form-check">
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3"
+        aria-describedby="invalidCheck3Feedback" required>
+      <label class="form-check-label" for="invalidCheck3" style="color: white;">
+        Agree to terms and conditions
+      </label>
+      <div id="invalidCheck3Feedback" class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+
+    {{!-- button --}}
+    <button class="btn btn-success btn-lg btn-block" type="submit">Create account</button>
+
+    {{!-- geolocalization --}}
+
+
+    <input type="text" name="latitude" id="latitude" style="display:none">
+    <input type="text" name="longitude" id="longitude" style="display:none">
+    <input type="text" name="lati" id="lati" style="display:none">
+    <input type="text" name="longi" id="longi" style="display:none">
+  </form>
+</div>
+</div>
+
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiaXNhZmVycmFyYSIsImEiOiJja2hjbnB5aHkwMm4yMnJycnJzNjZ6bWYwIn0.7s8wi3l0DnRJskfCjlmXOg';
   var map = new mapboxgl.Map({

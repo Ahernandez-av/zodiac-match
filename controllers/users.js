@@ -14,6 +14,7 @@ exports.processProfiles =  async(req, res) => {
     const longitude = Number(req.body.longitude)
     const logo = req.file.path
     console.log(date, month, year, hour, minute, latitude, longitude)
+    console.log(req.body)
     let astro = await Axios.post('basic_astro', {
       "day":date,
       "month":month,
@@ -24,6 +25,8 @@ exports.processProfiles =  async(req, res) => {
       "lon":longitude,
       "tzone":5.5
     })
+
+    console.log(astro)
 
     let sign = astro.data.sign
     let planet = astro.data.naksahtra_lord

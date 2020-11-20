@@ -1,37 +1,153 @@
-<h1>Edit your profile</h1>
-<form action="/update/{{user._id}}" enctype="multipart/form-data" method="post">
+<nav class="position-absolute w-100 px-4 pt-3" style="z-index:5">
+  <div class="d-flex justify-content-end align-items-center">
+    <a href="/dashboard">Back</a>
+  </div>
+</nav>
+
+<div style="padding: 20px">
+  <h2 style=" text-align: center;margin-top:20px; font-size:4vh">
+    Update
+  </h2>
   <br>
-  <h2>Profile information</h2>
-  <label for="username"> Username
-    <input type="text" name="username" id="username" value="{{user.username}}">
-  </label>
-  <br>
-  <label for="gender"> Gender
-    <select name="gender" id="gender" value="{{user.gender}}">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-  <label for="interest"> what are you looking for?
-    <select name="interest" id="interest" value="{{user.gender}}">
-      <option value="male"> Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-  <br>
-  <label for="plan"> Suscription plan
-    <select name="plan" id="plan" value="{{user.plan}}">
-      <option value="basic"> basic</option>
-      <option value="super">Super</option>
-    </select>
-  </label>
-  <br>
-  {{!-- $ npm install cloudinary multer multer-storage-cloudinary --}}
-  <label for="profilePicture">Show us your best picture:</label>
-  <input type="file" name="image" id="image" class="form-control-file" />
-  <button type="submit">submit</button>
-</form>
+
+  <form action="/update/{{user._id}}" enctype="multipart/form-data" method="post">
+
+    {{!-- info user --}}
+    <h2 style="text-align: center; font-size:2vh">User information</h2>
+
+    {{!-- username --}}
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <input value="{{user.username}}" type="text" name="username" id="username" type="text" class="form-control"
+          id="validationServer01" placeholder="username" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    {{!-- gender --}}
+    <div class="form-row">
+      <div class="form-group col-5">
+        <select name="gender" class="custom-select" id="validationServer04"
+          aria-describedby="validationServer04Feedback" required>
+          <option value="{{user.gender}}">{{user.gender}}</option>
+          <option value="0">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+      {{!-- interest --}}
+      <div class="form-group col-7">
+        <select name="interest" class="custom-select" id="validationServer04"
+          aria-describedby="validationServer04Feedback" required>
+          <option value="{{user.interest}}">{{user.interest}}</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+    </div>
+
+    {{!-- birth info --}}
+    <h2 style="text-align: center;margin-top:20px; font-size:2vh">Birth information</h2>
+
+    {{!-- day --}}
+    <div class="form-row">
+      <div class="form-group col-4">
+        <input value="{{user.birthDate.date}}" type="Number" name="date" class="form-control" id="validationServer01"
+          placeholder="day" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="form-group col-4">
+        {{!-- <label for="month" style="color: white; font-size:smaller" > month</label> --}}
+        <select name="month" class="custom-select" id="validationServer04" aria-describedby="validationServer04Feedback"
+          required>
+          <option value="{{user.birthDate.month}}">{{user.birthDate.month}}</option>
+          <option value="0"> Month</option>
+          <option value="1"> January</option>
+          <option value="2">February</option>
+          <option value="3"> March</option>
+          <option value="4">April</option>
+          <option value="5"> May</option>
+          <option value="6">June</option>
+          <option value="7"> July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10"> October</option>
+          <option value="11">November</option>
+          <option value="12"> December</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        </div>
+      </div>
+
+      {{!-- year --}}
+      <div class="form-group col-4">
+        <input value="{{user.birthDate.year}}" type="Number" name="year" class="form-control" id="validationServer01"
+          placeholder="year" value="year" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      {{!-- hour --}}
+      <div class="form-group col-6">
+        <input value="{{user.birthDate.hour}}" type="Number" name="hour" class="form-control" id="validationServer01"
+          placeholder="hour" value="hour" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      {{!-- minute --}}
+      <div class="form-group col-6">
+        <input value="{{user.birthDate.minute}}" type="Number" name="minute" class="form-control"
+          id="validationServer01" placeholder="minutes" value="minutes" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    {{!-- birth place --}}
+    <h2 style="text-align: center; font-size:2vh">Place of Birth</h2>
+
+    {{!-- map --}}
+    <div>
+      <div id="map" class="rounded" style="width:100%; height: 250px"></div>
+    </div>
+    <hr>
+
+    {{!-- picture --}}
+    <div class="form-group">
+      <label style="color: white; font-size:small" for="image">Show us your best picture:</label>
+      <input value="{{user.profilePicture}}" type="file" name="image" id="image" class="form-control-file"
+        style="color: white;" />
+    </div>
+
+    {{!-- button --}}
+    <button class="btn btn-success btn-lg btn-block" type="submit">Update Account</button>
+
+    {{!-- geolocalization --}}
+
+
+    <input value="{{user.birthDate.latitude}}" type="text" name="latitude" id="latitude" style="display:none">
+    <input value="{{user.birthDate.longitude}}" type="text" name="longitude" id="longitude" style="display:none">
+    <input type="text" name="lati" id="lati" style="display:none">
+    <input type="text" name="longi" id="longi" style="display:none">
+  </form>
+</div>
+</div>
+
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiaXNhZmVycmFyYSIsImEiOiJja2hjbnB5aHkwMm4yMnJycnJzNjZ6bWYwIn0.7s8wi3l0DnRJskfCjlmXOg';
   var map = new mapboxgl.Map({
@@ -43,10 +159,27 @@
     mapboxgl: mapboxgl
   })
   let mapi = gc.on('result', e => {
-    const { result: { center, place_name } } = e
+    const { result: { center } } = e
     document.querySelector('#longitude').value = center[0]
     document.querySelector('#latitude').value = center[1]
-    //document.querySelector('#address').value= place_nam
+    console.log(center)
   })
   map.addControl(gc);
+  // $addressInput.setAttribute('placeholder', place_name) 
+  document.querySelector('button').removeAttribute('disabled')
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const center = [
+        position.coords.longitude,
+        position.coords.latitude,
+      ];
+      document.querySelector('#lati').value = center[1]
+      document.querySelector('#longi').value = center[0]
+      console.log('center: ', center)
+    }, function () {
+      console.log('Error in the geolocation service.');
+    });
+  } else {
+    console.log('Browser does not support geolocation.');
+  }
 </script>
