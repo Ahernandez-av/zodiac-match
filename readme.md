@@ -3,7 +3,9 @@
 Con nuestra app podrás encontrar al amor de tu vida con tu signo zodiacal. Solo necesitas registrar tu información de nacimiento (día, mes, año, hora, minuto y lugar de nacimiento) y Zodiac Match hará un análisis detallado de tus datos para generar un reporte con toda tu información zodiacal. Podrás ver
 todos tus pronósticos diarios sobre tu salud, vida personal, emociones, viajes y tu suerte; pero la característica que diferencia a Zodiac Match de cualquier otra aplicación, es que también podrás encontrar a las personas alrededor del mundo que sean compatibles contigo y ver el reporte de compatibilidad. Luego podrás decidir si quieres hacer el match para poder hablar con ellas por medio de un chat. Zodiac Match es una aplicación ideal para las nuevas generaciones que buscan nuevas formas de encontrar al amor.
 
-Ver con el viewport en 375px de ancho
+Ver con el viewport en 375px de ancho.
+
+Nos faltaron algunos detalles de estilo, como limpiar el html, aplicar el middleware de rutas que habiamos hecho en algunas rutas que nos faltaron, el crud en algunos modelos y demas. Pero por tiempo no logramos cumplir todo lo que teniamos planeado para la entrega, aun asi lo estaremos agregando en el transcurso de los dias.
 
 
 ###Cuentas para DEMO
